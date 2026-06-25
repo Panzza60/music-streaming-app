@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 MusicApp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo"><h1>🎵 MusicApp</h1></div>
+            <nav class="nav-menu">
+                <button class="nav-item active" onclick="showSection('home')">🏠 Inicio</button>
+                <button class="nav-item" onclick="showSection('search')">🔍 Buscar</button>
+                <button class="nav-item" onclick="showSection('trending')">🔥 Trending</button>
+                <button class="nav-item" onclick="showSection('playlists')">📋 Playlists</button>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section id="home" class="section active">
+                <h2>Bienvenido a MusicApp</h2>
+                <p>Disfruta de música en streaming</p>
+                <div class="quick-search">
+                    <input type="text" id="quickSearchInput" placeholder="Busca una canción..." />
+                    <button onclick="quickSearch()">Buscar</button>
+                </div>
+            </section>
+            <section id="search" class="section">
+                <h2>Buscar Música</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Busca artista, canción..." />
+                    <button onclick="searchMusic()">Buscar</button>
+                </div>
+                <div id="searchResults" class="results-grid"></div>
+            </section>
+            <section id="trending" class="section">
+                <h2>Canciones en Tendencia</h2>
+                <button onclick="loadTrending()" class="btn-primary">Cargar Trending</button>
+                <div id="trendingResults" class="results-grid"></div>
+            </section>
+            <section id="playlists" class="section">
+                <h2>Mis Playlists</h2>
+                <div class="playlist-actions">
+                    <input type="text" id="playlistName" placeholder="Nombre de la playlist" />
+                    <button onclick="createPlaylist()">Crear Playlist</button>
+                </div>
+                <div id="playlistsList" class="playlists-container"></div>
+            </section>
+            <div class="player">
+                <div class="player-info">
+                    <img id="playerThumbnail" src="" alt="Thumbnail" class="player-thumbnail">
+                    <div>
+                        <p id="playerTitle">Selecciona una canción</p>
+                        <p id="playerArtist">MusicApp</p>
+                    </div>
+                </div>
+                <div class="player-controls">
+                    <button onclick="previousSong()">⏮️</button>
+                    <button id="playPauseBtn" onclick="togglePlayPause()">▶️</button>
+                    <button onclick="nextSong()">⏭️</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="songModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSongModal()">&times;</span>
+            <img id="modalThumbnail" src="" alt="Thumbnail" class="modal-thumbnail">
+            <h3 id="modalTitle"></h3>
+            <p id="modalArtist"></p>
+            <button onclick="playSongFromModal()" class="btn-primary">Reproducir</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
